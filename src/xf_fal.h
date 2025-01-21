@@ -37,7 +37,7 @@ extern "C" {
 /* ==================== [Global Prototypes] ================================= */
 
 /**
- * @cond XFAPI_PORT
+ * @cond (XFAPI_USER || XFAPI_PORT)
  * @addtogroup group_xf_fal
  * @endcond
  * @{
@@ -142,18 +142,6 @@ xf_err_t xf_fal_unregister_flash_device(const xf_fal_flash_dev_t *p_dev);
 xf_err_t xf_fal_unregister_partition_table(const xf_fal_partition_t *p_table);
 
 /**
- * End of addtogroup group_xf_fal
- * @}
- */
-
-/**
- * @cond (XFAPI_USER || XFAPI_PORT)
- * @addtogroup group_xf_fal
- * @endcond
- * @{
- */
-
-/**
  * @brief 检查 xf_fal 注册状态。
  *
  * @return true                 已注册
@@ -228,7 +216,7 @@ const xf_fal_partition_t *xf_fal_partition_find(const char *name);
  * @param part       分区表中的指定分区。
  *                   可以通过 xf_fal_partition_find() 获取。
  * @param src_offset 要读取的数据的地址。相对当前分区起始地址的偏移地址。
- * @param[out] buf   指向读取缓冲区。
+ * @param[out] dst   指向读取缓冲区。
  * @param size       要读取的数据大小，单位：字节。
  * @return xf_err_t
  *      - XF_OK                 成功
